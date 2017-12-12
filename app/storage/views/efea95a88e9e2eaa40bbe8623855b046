@@ -1,0 +1,114 @@
+<?php $__env->startSection('title'); ?>
+ kontakt
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<h4 class="pull-right" style="color:red; font-weight:900; font-style:italic;">Kontakt</h4><br>
+<hr style="border-color: grey;">
+
+<div class="col-sm-4">
+<div class="address" >
+	FireShopAps<br>
+	Ny Kongensgade 11 <br>
+	9670 Løgstør<br>
+	+45 7020 6502<br>
+	info@fireshop.dk
+	<br>
+	<br> <br> 
+	
+</div>
+
+	<?php echo Form::open(array('route' => 'postKontakt')); ?>
+
+		<div class="form-group <?php echo ($errors->has('firmanavn')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Evt Firmanavn'); ?>
+
+		<?php echo Form::text('firmanavn', '', array('class' => 'form-control', 'required' => 'required')); ?>
+
+		<?php if($errors->has('firmanavn')): ?>
+			<strong>
+				<?php echo $errors->first('firmanavn'); ?>
+
+			</strong>
+		<?php endif; ?>
+		</div>
+		<br>
+
+		<div class="form-group <?php echo ($errors->has('kontaktperson')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Kontaktperson'); ?>
+
+		<?php echo Form::text('kontaktperson', '', array('class' => 'form-control', 'required' => 'required')); ?>
+
+		<?php if($errors->has('kontaktperson')): ?>
+			<strong>
+				<?php echo $errors->first('kontaktperson'); ?>
+
+			</strong>
+		<?php endif; ?>
+		</div>
+		<br>
+
+		
+
+		<div class="form-group <?php echo ($errors->has('phone')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Telefon'); ?>
+
+		<?php echo Form::text('phone', '', array('class' => 'form-control', 'required' => 'required')); ?>
+
+		<?php if($errors->has('phone')): ?>
+			<strong>
+				<?php echo $errors->first('phone'); ?>
+
+			</strong>
+		<?php endif; ?>
+		</div>
+		<br>
+
+		
+		<div class="form-group <?php echo ($errors->has('email')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Email'); ?>
+
+		<?php echo Form::email('email', '', array('class' => 'form-control', 'required'=> 'required')); ?>
+
+		<?php if($errors->has('email')): ?>
+			<strong>
+				<?php echo $errors->first('email'); ?>
+
+			</strong>
+		<?php endif; ?>
+		</div>
+		<br>
+
+		<div class="form-group <?php echo ($errors->has('question')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Spørgsmål'); ?>
+
+		<?php echo Form::textarea('question', '', array('class' => 'form-control', 'required' => 'required')); ?>
+
+		<?php if($errors->has('question')): ?>
+			<strong>
+				<?php echo $errors->first('question'); ?>
+
+			</strong>
+		<?php endif; ?>
+		</div>
+		<br>
+
+		
+		<?php echo Form::submit('OK', array('class' => 'btn ')); ?>
+
+	
+	<?php echo Form::close(); ?>
+
+
+</div>
+<div class="col-sm-8">
+<div class="map" style="position:relative;">
+<img src="/logo/map.jpg" class="img-responsive">
+<div class="location" style="position:absolute; top:230px; right:350px; width:10px; height:10px;background:red;"></div>
+	
+</div>
+	
+</div>	
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

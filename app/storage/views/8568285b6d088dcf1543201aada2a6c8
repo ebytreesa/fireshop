@@ -1,0 +1,13 @@
+<?php $__env->startSection('title'); ?>
+	home
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h4>Velkommen til Fire Shop Aps</h4>
+<hr style="border:1px solid grey;">
+ <img src="/img/<?php echo $forside->image; ?>" class="img-responsive" id="textWrap">
+	<p><?php echo nl2br($forside->description); ?></p>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

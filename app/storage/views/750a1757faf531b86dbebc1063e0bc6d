@@ -1,0 +1,50 @@
+<?php $__env->startSection('title'); ?>
+	List Tibud
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h1>List Tilbud</h1>
+<hr>
+<a href="/admin/createTilbud" class="btn btn-primary">Opret Ny</a>
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>Navn</th>
+		<th>image</th>
+		<th>Pris</th>
+		<th>Ny Pris</th>
+		<th>Start Dato</th>
+		<th>Slut Dato</th>
+		<th>Ret</th>
+		<th>Slet</th>
+		
+		
+		
+	</tr>
+	<?php foreach($tilbud as $tilbud): ?>
+		<tr>
+
+			<td><?php echo $tilbud->id; ?></td>
+			<?php $ovnId = OvnItem::where('id', $tilbud->item_id)->first()->ovn_id; 
+			           		
+			           ?>
+			<td><?php echo Ovn::where('id', $ovnId)->first()->name; ?>  <?php echo OvnItem::where('id', $tilbud->item_id)->first()->name; ?></td>
+			<td><img src="/ovn/<?php echo OvnItem::where('id', $tilbud->item_id)->first()->image; ?>" style="height:50px; width:50px;"></td>
+			<td><?php echo OvnItem::where('id', $tilbud->item_id)->first()->pris; ?></td>
+			<td><?php echo $tilbud->nypris; ?></td>
+			<td><?php echo $tilbud->startdato; ?></td>
+			<td><?php echo $tilbud->slutdato; ?></td>
+			<td><a href="/admin/editTilbud/<?php echo $tilbud->id; ?>" class="btn btn-primary btn-xs">RET</a></td>
+			<td><a href="/admin/deleteTilbud/<?php echo $tilbud->id; ?>" class="btn btn-danger btn-xs">SLET</a></td>
+			
+			
+			
+		</tr>
+	<?php endforeach; ?>
+</table>
+ 
+	
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

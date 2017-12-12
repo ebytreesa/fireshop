@@ -1,0 +1,9 @@
+<?php $__env->startSection('title'); ?>
+	home
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+<h3>Søgresultater</h3>
+<p>"Der er desværre ikke nogen emner,der matcher din søgkriterior";</p>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

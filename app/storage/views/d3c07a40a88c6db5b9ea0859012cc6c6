@@ -1,0 +1,27 @@
+<?php $__env->startSection('title'); ?>
+	ovne
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h4 class="pull-right" style="color:red; font-weight:900; font-style:italic;">BRÆNDEOVNE</h4><br>
+<hr style="border-color: grey;">
+<?php /* <div class="container"> */ ?>
+	<div class="row" >	
+		<div class="center-ovn" style="margin:0 auto; min-width:200px; max-width:700px;">
+		<?php foreach($ovne as $ovn): ?>
+		<div class="col-sm-4" >
+		 <a href="/ovne/<?php echo $ovn->name; ?>/listItems"><img src="/ovn/<?php echo $ovn->pic; ?>" style="height:160px; width:100px;">
+		 <h5 style="color:red; font-weight:600; padding-left: 20px; "><?php echo $ovn->name; ?></h5></a>
+	
+	    </div>
+	<?php endforeach; ?>
+	</div>
+</div>
+<?php /* </div> */ ?>
+
+
+ 
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

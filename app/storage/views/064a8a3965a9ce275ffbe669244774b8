@@ -1,0 +1,60 @@
+<?php $__env->startSection('title'); ?>
+	edit Tibud
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h1>edit Tilbud</h1>
+<hr>
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>Navn</th>
+		<th>image</th>
+		<th>Pris</th>
+		<th>Ny Pris</th>
+		<th>Start Dato</th>
+		<th>Slut Dato</th>
+		
+		
+		
+		
+		
+	</tr>
+	
+		<tr>
+		
+			<td><?php echo $tilbud->id; ?></td>
+			<?php $ovnId = OvnItem::where('id', $tilbud->item_id)->first()->ovn_id; 
+			           		
+			           ?>
+			<td><?php echo Ovn::where('id', $ovnId)->first()->name; ?> <?php echo $item->name; ?></td>
+			<td><img src="/ovn/<?php echo $item->image; ?>" style="height:50px; width:50px;"></td>
+			<td><?php echo $item->pris; ?></td>
+			<?php echo Form::open(array('route' => 'postEditTilbud')); ?>
+
+			<input type="hidden" name="id" value="<?php echo $tilbud->id; ?>">
+			<td><input type="text" name="nypris" value="<?php echo $tilbud->nypris; ?>"></td>
+			<td><input type="date" name="start_dato" value="<?php echo $tilbud->startdato; ?>"></td>
+			<td><input type="date" name="slut_dato" value="<?php echo $tilbud->slutdato; ?>"></td>
+
+			</tr></table>
+			<?php echo Form::submit('RET', array('class' => 'btn btn-primary')); ?>
+
+			<?php echo Form::close(); ?>
+
+			
+			
+			
+			
+			
+		
+	
+
+
+<?php $__env->stopSection(); ?>
+ 
+
+
+<?php echo $__env->make('layout.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

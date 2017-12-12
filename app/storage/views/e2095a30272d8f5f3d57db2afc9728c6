@@ -1,0 +1,35 @@
+<?php $__env->startSection('title'); ?>
+	list Kontakt
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<h1>Kontakter</h1>
+	<table class="table">
+		<tr>
+			<th>#</th>
+			<th>Firmanavn</th>
+			<th>KontaktPerson</th>
+		
+			<th>Telefone</th>
+			<th>Email</th>
+			<th>Spørsmål</th>
+			<th>RET</th>
+			
+			
+		</tr>
+		<?php foreach($kontakt AS $kontakt): ?>
+			<tr>
+				<td><p><?php echo $kontakt->id; ?></p></td>
+				<td><p><?php echo $kontakt->firmanavn; ?></p></td>
+				<td><p><?php echo $kontakt->kontaktperson; ?></p></td>
+				
+				<td><p><?php echo $kontakt->phone; ?></p></td>
+				<td><p><?php echo $kontakt->email; ?></p></td>
+				<td><p><?php echo nl2br($kontakt->question); ?></p></td>
+				<td><a href="/admin/editKontakt/<?php echo $kontakt->id; ?>" class="btn btn-primary btn-xs">RET</a></td>
+				
+			</tr>
+		<?php endforeach; ?>
+	</table>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

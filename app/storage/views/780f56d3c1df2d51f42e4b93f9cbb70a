@@ -1,0 +1,21 @@
+<?php $__env->startSection('title'); ?>
+	nyheder
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h4 class="pull-right" style="color:red; font-weight:900; font-style:italic;">NYHEDER</h4><br>
+<hr style="border-color: grey;">
+
+ <?php foreach($nyhed as $nyhed): ?>
+ 
+ <h3><?php echo $nyhed->title; ?></h3>
+ <?php echo $nyhed->created_at; ?>
+
+ <p><?php echo nl2br($nyhed->description); ?></p>
+ <hr style="border-color: red;">
+ <?php endforeach; ?>
+ 
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

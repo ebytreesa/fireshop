@@ -1,0 +1,79 @@
+<?php $__env->startSection('title'); ?>
+	Create ny Item
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h1>Ny Ovn Item i <?php echo $acc->name; ?></h1>
+<br>
+ 
+<?php echo Form::open(array('route' => 'postCreateTilbehørItem', 'files' => true)); ?>
+
+
+	<?php echo Form::hidden('id', $acc->id ); ?>
+
+	<div class="form-group <?php echo ($errors->has('name')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Navn'); ?>
+
+		<?php echo Form::text('name', '', array('class' => 'form-control', 'required' => 'required')); ?>
+
+			
+
+	<?php if($errors->has('name')): ?>
+			<strong>
+				<?php echo $errors->first('name'); ?>
+
+			</strong>
+		<?php endif; ?>
+	</div>
+	<div class="form-group <?php echo ($errors->has('pris')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('pris'); ?>
+
+		<?php echo Form::number('pris', '', array('class' => 'form-control', 'required' => 'required')); ?>
+
+			
+
+	<?php if($errors->has('pris')): ?>
+			<strong>
+				<?php echo $errors->first('pris'); ?>
+
+			</strong>
+		<?php endif; ?>
+	</div>
+
+
+	<div class="form-group <?php echo ($errors->has('description')) ? 'has-error' : ''; ?>">
+	<?php echo Form::label('description'); ?>
+
+	<?php echo Form::textarea('description', '', array('class' => 'form-control', 'required' => 'required')); ?>
+
+
+	<?php if($errors->has('description')): ?>
+			<strong>
+				<?php echo $errors->first('description'); ?>
+
+			</strong>
+		<?php endif; ?>
+	</div>
+		<br>
+
+	
+	
+
+	
+	<?php echo Form::label('billede'); ?>
+
+	<?php echo Form::file('pic'); ?>
+
+	<br>
+	<?php echo Form::submit('opret', array('class' => 'btn btn-primary')); ?>
+
+	
+
+	 
+<?php echo Form::close(); ?>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

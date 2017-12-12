@@ -1,0 +1,62 @@
+<?php $__env->startSection('title'); ?>
+	Advanceret søg
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h1>Advanceret søg</h1>
+<hr>
+ 
+<?php echo Form::open(array('route' => 'postAdvSearch')); ?>
+
+
+<div class="form-group ">
+		<label for=" Mærke" >Mærke</label>
+		<select name="ovn" >
+			<?php foreach($ovn as $ovn): ?>
+			<option value=<?php echo $ovn->name; ?>><?php echo $ovn->name; ?> </option> 
+		     <?php endforeach; ?>
+		</select>
+
+		
+		</div>
+		<br> 
+		<?php
+		$items = DB::table('ovne')
+				->join('ovn_items', 'ovn_items.ovn_id', '=', 'ovne.id')->select('ovn_items.name as item_name', 'ovn_items.pris', 'ovne.name')->get();
+
+		?>
+
+	<div class="form-group ">
+		<label for=" item" >Model</label>
+		<select name="item"  >
+			<?php foreach($items as $item): ?>
+			<option value=<?php echo $item->item_name; ?>><?php echo $item->item_name; ?> </option> 
+		    <?php endforeach; ?>
+		</select>
+
+		
+	</div>
+		<br>
+	<label for=" pris" >Max Pris</label>
+		<input type="text" name="pris">
+			<br>	<br>
+
+	<label for="search" >Søg ord</label>
+		<input type="text" name="search">
+	
+	
+
+	<br>	<br>	<br>
+	
+	<?php echo Form::submit('søg', array('class' => 'btn btn-primary')); ?>
+
+	
+
+	 
+<?php echo Form::close(); ?>
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.home', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

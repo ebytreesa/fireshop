@@ -1,0 +1,37 @@
+<?php $__env->startSection('title'); ?>
+	home
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h1>Ovne liste </h1>
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>Navn</th>
+		<th>image</th>
+		<th>Opdateret</th>
+		<th>Oprettet</th>
+		<th>Ret</th>
+		<th>Slet</th>
+		
+	</tr>
+	<?php foreach($ovne as $ovne): ?>
+		<tr>
+			<td><?php echo $ovne->id; ?></td>
+			<td><a  href="/admin/<?php echo $ovne->name; ?>/list"><?php echo $ovne->name; ?></a></td>
+			<td><img src="/ovn/<?php echo $ovne->pic; ?>" style="height:50px; width:50px;"><br>
+			<td><?php echo $ovne->updated_at; ?></td>
+			<td><?php echo $ovne->created_at; ?></td>
+			<td><a href="/admin/editOvn/<?php echo $ovne->id; ?>" class="btn btn-primary btn-xs">RET</a></td>
+			<td><a href="/admin/deleteOvn/<?php echo $ovne->id; ?>" class="btn btn-danger btn-xs">SLET</a></td>
+			
+		</tr>
+	<?php endforeach; ?>
+
+</table>
+<a href="/admin/createNyOvn" class="btn btn-primary">Ny Ovn</a>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

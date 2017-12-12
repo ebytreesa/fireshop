@@ -1,0 +1,40 @@
+<?php $__env->startSection('title'); ?>
+	listOvnItems
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h1><?php echo $ovn->name; ?>              </h1>
+
+<table class="table">
+	<tr>
+		<th>#</th>
+		<th>Navn</th>
+		<th>image</th>
+		<th>pris</th>
+		<th>Description</th>
+		<th>product details</th>
+		<th>Ret</th>
+		<th>Slet</th>
+		
+	</tr>
+	 <?php foreach($item as $item): ?>
+		<tr>
+			<td><?php echo $item->id; ?></td>
+			<td><?php echo $item->name; ?></td>
+			<td><img src="/ovn/<?php echo $item->image; ?>" style="height:50px; width:50px;"><br>
+			<td><?php echo $item->pris; ?></td>
+			<td><?php echo nl2br($item->description); ?></td>
+			<td><?php echo nl2br($item->product_details); ?></td>
+			
+			<td><a href="/admin/<?php echo $ovn->name; ?>/editOvnItem/<?php echo $item->id; ?>" class="btn btn-primary btn-xs">RET</a></td>
+			<td><a href="/admin/<?php echo $ovn->name; ?>/deleteOvnItem/<?php echo $item->id; ?>" class="btn btn-danger btn-xs">SLET</a></td>
+			
+		</tr>
+	<?php endforeach; ?>
+ 
+</table>
+<a href="/admin/<?php echo $ovn->name; ?>/createNyOvnItem" class="btn btn-primary">Opret Ny</a>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

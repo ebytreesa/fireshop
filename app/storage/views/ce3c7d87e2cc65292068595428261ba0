@@ -1,0 +1,90 @@
+<?php $__env->startSection('title'); ?>
+	list Kontakt
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<h1>Kontakter</h1>
+<?php echo Form::open(array('route' => 'postEditKontakt')); ?>
+
+	<?php echo Form::hidden('id', $kontakt->id); ?>
+
+		<div class="form-group <?php echo ($errors->has('firmanavn')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Evt Firmanavn'); ?>
+
+		<?php echo Form::text('firmanavn', $kontakt->firmanavn, array('class' => 'form-control', 'required' => 'required')); ?>
+
+		<?php if($errors->has('firmanavn')): ?>
+			<strong>
+				<?php echo $errors->first('firmanavn'); ?>
+
+			</strong>
+		<?php endif; ?>
+		</div>
+		<br>
+
+		<div class="form-group <?php echo ($errors->has('kontaktperson')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Kontaktperson'); ?>
+
+		<?php echo Form::text('kontaktperson', $kontakt->kontaktperson, array('class' => 'form-control', 'required' => 'required')); ?>
+
+		<?php if($errors->has('kontaktperson')): ?>
+			<strong>
+				<?php echo $errors->first('kontaktperson'); ?>
+
+			</strong>
+		<?php endif; ?>
+		</div>
+		<br>
+
+		
+
+		<div class="form-group <?php echo ($errors->has('phone')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Telefon'); ?>
+
+		<?php echo Form::text('phone', $kontakt->phone, array('class' => 'form-control', 'required' => 'required')); ?>
+
+		<?php if($errors->has('phone')): ?>
+			<strong>
+				<?php echo $errors->first('phone'); ?>
+
+			</strong>
+		<?php endif; ?>
+		</div>
+		<br>
+
+		
+		<div class="form-group <?php echo ($errors->has('email')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Email'); ?>
+
+		<?php echo Form::email('email', $kontakt->email, array('class' => 'form-control', 'required'=> 'required')); ?>
+
+		<?php if($errors->has('email')): ?>
+			<strong>
+				<?php echo $errors->first('email'); ?>
+
+			</strong>
+		<?php endif; ?>
+		</div>
+		<br>
+
+		<div class="form-group <?php echo ($errors->has('question')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Spørgsmål'); ?>
+
+		<?php echo Form::textarea('question', nl2br($kontakt->question), array('class' => 'form-control', 'required' => 'required')); ?>
+
+		<?php if($errors->has('question')): ?>
+			<strong>
+				<?php echo $errors->first('question'); ?>
+
+			</strong>
+		<?php endif; ?>
+		</div>
+		<br>
+
+		
+		<?php echo Form::submit('OK', array('class' => 'btn ')); ?>
+
+	
+	<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>	
+<?php echo $__env->make('layout.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

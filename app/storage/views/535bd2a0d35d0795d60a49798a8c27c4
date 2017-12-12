@@ -1,0 +1,44 @@
+<?php $__env->startSection('title'); ?>
+	Ret Ovn
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+<h1>Ret Ovn </h1>
+<br>
+<?php echo Form::open(array('route' => 'postEditTilbehør', 'files' => true)); ?>
+
+	<?php echo Form::hidden('id', $acc->id); ?>
+
+	<div class="form-group <?php echo ($errors->has('name')) ? 'has-error' : ''; ?>">
+		<?php echo Form::label('Navn'); ?>
+
+		<?php echo Form::text('name', $acc->name, array('class' => 'form-control', 'required' => 'required')); ?>
+
+			
+
+	<?php if($errors->has('name')): ?>
+			<strong>
+				<?php echo $errors->first('name'); ?>
+
+			</strong>
+		<?php endif; ?>
+	</div>
+	
+
+	<img src="/accessory/<?php echo $acc->pic; ?>" style="height:80px; width:80px;"><br><br>
+	<?php echo Form::label('billede'); ?>
+
+	<?php echo Form::file('pic'); ?>
+
+	<br>
+	<?php echo Form::submit('RET', array('class' => 'btn btn-primary')); ?>
+
+	
+
+	 
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.dashboard', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
